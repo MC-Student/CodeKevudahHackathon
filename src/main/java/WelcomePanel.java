@@ -16,8 +16,6 @@ public class WelcomePanel extends JPanel
 
     public JFormattedTextField mentalHealthDays;
 
-    public JFormattedTextField companyTO;
-
     public WelcomePanel()
     {
 
@@ -26,6 +24,10 @@ public class WelcomePanel extends JPanel
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+        JOptionPane.showMessageDialog(this, "Welcome to My Frum Calendar\n" +
+                "Our goal is to minimize the impact of Frum\n" +
+                "scheduling conflicts on your salary. You tell us when you work, and we help you figure out how\n" +
+                        "to take the least amount of unpaid leave.");
         add(new JLabel("Please choose the starting year (January - December)"));
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy");
@@ -57,12 +59,6 @@ public class WelcomePanel extends JPanel
         mentalHealthDays = new JFormattedTextField(numberFormatter);
         sickDays.setColumns(5);
         add(mentalHealthDays);
-
-        add(new JLabel("Please enter how many company-wide time off"));
-
-        companyTO = new JFormattedTextField(numberFormatter);
-        sickDays.setColumns(5);
-        add(companyTO);
     }
 
     public int getYear()

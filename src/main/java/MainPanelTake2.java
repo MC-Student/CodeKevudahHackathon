@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
@@ -26,8 +25,7 @@ public class MainPanelTake2 extends JPanel
 
     private void onSubmitWelcome(ActionEvent actionEvent)
     {
-        if (!welcomePanel.companyTO.getText().equals("")
-                && !welcomePanel.mentalHealthDays.getText().equals("")
+        if (!welcomePanel.mentalHealthDays.getText().equals("")
                 && !welcomePanel.sickDays.getText().equals("")
                 && !welcomePanel.paidDays.getText().equals(""))
         {
@@ -107,7 +105,13 @@ public class MainPanelTake2 extends JPanel
     {
         removeAll();
 
-        JOptionPane.showMessageDialog(this, "Result goes here");
+        int year = welcomePanel.getYear();
+        boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
+
+        Calculator calculator = new Calculator(isLeap, Integer.parseInt(welcomePanel.paidDays.getText()),
+                Integer.parseInt(welcomePanel.sickDays.getText()),
+                Integer.parseInt(welcomePanel.mentalHealthDays.getText()), step2Panels, unpaidHolidayPanels);
+        JOptionPane.showMessageDialog(this, calculator.calculateLostDays(unpaidHolidayPanels));
 
         add(new JLabel("All done!"));
 

@@ -19,6 +19,7 @@ public class UnpaidHolidayPanel extends JPanel
         add(new JComboBox<>(yamimTovim));
         add(new JLabel("Choose the starting date"));
         datePanel = new DatePanel();
+        add(datePanel);
         add(new JLabel("How many days do you need to take off"));
 
         NumberFormatter numberFormatter = new NumberFormatter(new DecimalFormat("#"));
