@@ -10,7 +10,7 @@ public class Main extends JFrame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
-        add(new MainPanelTake2());
+        add(new MainPanel());
         // GET DATES FOR
         // User input - jewish holiday dates for now
         // company holidays

@@ -12,7 +12,7 @@ public class Calculator
     private HashMap<Integer, boolean[]> workingPaidDays;
 
     public Calculator(boolean leapYear, int pto, int sickDays, int mentalHealthDays,
-                      ArrayList<Step2Panel> step2PanelArrayList, ArrayList<UnpaidHolidayPanel> unpaidHolidayPanelArrayList)
+                      ArrayList<PaidHolidayPanel> step2PanelArrayList, ArrayList<UnpaidHolidayPanel> unpaidHolidayPanelArrayList)
     {
         this.PTO = pto;
         this.sickDays = sickDays;

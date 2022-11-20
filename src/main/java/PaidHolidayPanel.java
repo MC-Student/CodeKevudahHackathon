@@ -1,12 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Date;
 
-public class Step2Panel extends JPanel
+public class PaidHolidayPanel extends JPanel
 {
     public DatePanel datePanel;
 
-    public Step2Panel()
+    public PaidHolidayPanel()
     {
         setLayout(new FlowLayout());
 
