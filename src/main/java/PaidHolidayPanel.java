@@ -9,11 +9,9 @@ public class PaidHolidayPanel extends JPanel
     {
         setLayout(new FlowLayout());
 
-        String[] paidHolidays = new String[]{"Thanksgiving", "New Years", "Veteran's Day", "Memorial Day", "Other"};
+        String[] paidHolidays = new String[]{"New Years", "Thanksgiving", "Veteran's Day", "Memorial Day", "Other"};
         add(new JComboBox<>(paidHolidays));
         datePanel = new DatePanel();
         add(datePanel);
-
-
     }
 }

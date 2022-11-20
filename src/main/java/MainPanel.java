@@ -87,7 +87,7 @@ public class MainPanel extends JPanel
         addMoreUnpaidHolidays.addActionListener(this::onSubmitAddMoreUnpaidHolidays);
         add(addMoreUnpaidHolidays);
 
-        JButton submitUnpaidHolidays = new JButton("NEXT");
+        JButton submitUnpaidHolidays = new JButton("Calculate Calendar");
         submitUnpaidHolidays.addActionListener(this::onSubmitUnpaidHolidays);
         add(submitUnpaidHolidays);
     }
@@ -97,6 +97,11 @@ public class MainPanel extends JPanel
         removeAll();
 
         addNewUnpaidHolidayPanel();
+
+        for (int i = 0; i < unpaidHolidayPanels.size(); i++)
+        {
+            System.out.println(unpaidHolidayPanels.get(i).datePanel.getCorrespondingNumber());
+        }
 
         revalidate();
     }
@@ -111,7 +116,10 @@ public class MainPanel extends JPanel
         Calculator calculator = new Calculator(isLeap, Integer.parseInt(welcomePanel.paidDays.getText()),
                 Integer.parseInt(welcomePanel.sickDays.getText()),
                 Integer.parseInt(welcomePanel.mentalHealthDays.getText()), step2Panels, unpaidHolidayPanels);
-        JOptionPane.showMessageDialog(this, calculator.calculateLostDays(unpaidHolidayPanels));
+        JOptionPane.showMessageDialog(this,
+                "Lost days: " + calculator.calculateLostDays(unpaidHolidayPanels) +
+        "\nPaid Time Off Remaining: " + calculator.PTO + "\nSick Days Remaining: " + calculator.sickDays +
+        "\nMental Health Days Remaining: " + calculator.mentalHealth);
 
         add(new JLabel("All done!"));
 

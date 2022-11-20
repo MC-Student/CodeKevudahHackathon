@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
@@ -75,6 +76,10 @@ public class DatePanel extends JPanel
 
     private void validateDay()
     {
+        boolean alreadySet = (days != null);
+        int dayOfMonth = alreadySet
+                ? Integer.parseInt(Objects.requireNonNull(days.getSelectedItem()).toString())
+                : 1;
         days = new JComboBox<>();
         leapYear = getLeapYear();
 
@@ -91,6 +96,8 @@ public class DatePanel extends JPanel
             days.addItem(i + "");
         }
         days.setEditable(false);
+
+        days.setSelectedItem(dayOfMonth + "");
         add(days);
     }
 

@@ -42,6 +42,20 @@ public class Calculator
         calculateLostDays(unpaidHolidayPanelArrayList);
     }
 
+    public int calculateLostDays(ArrayList<UnpaidHolidayPanel> unpaidHolidayPanelArrayList)
+    {
+        int lostDays = 0;
+
+        for (int i = 0; i < unpaidHolidayPanelArrayList.size(); i++)
+        {
+            int day = unpaidHolidayPanelArrayList.get(i).datePanel.getCorrespondingNumber();
+            int numDays = Integer.parseInt(unpaidHolidayPanelArrayList.get(i).daysToTakeOff.getText());
+            lostDays = updateCalendar(numDays, workingPaidDays, day, lostDays);
+        }
+
+        return lostDays;
+    }
+
     private int updateCalendar(int NumDaysOff, HashMap<Integer, boolean[]> workingPaidDays, int startDate, int lostDays)
     {
         while (NumDaysOff > 0)
@@ -80,20 +94,5 @@ public class Calculator
         }
         return lostDays;
     }
-
-    public int calculateLostDays(ArrayList<UnpaidHolidayPanel> unpaidHolidayPanelArrayList)
-    {
-        int lostDays = 0;
-
-        for (int i = 0; i < unpaidHolidayPanelArrayList.size(); i++)
-        {
-            int day = unpaidHolidayPanelArrayList.get(i).datePanel.getCorrespondingNumber();
-            int numDays = Integer.parseInt(unpaidHolidayPanelArrayList.get(i).daysToTakeOff.getText());
-            lostDays = updateCalendar(numDays, workingPaidDays, day, lostDays);
-        }
-
-        return lostDays;
-    }
-
 
 }
