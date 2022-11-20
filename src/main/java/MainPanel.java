@@ -125,8 +125,8 @@ public class MainPanel extends JPanel
             boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
 
             Calculator calculator = new Calculator(isLeap, Integer.parseInt(welcomePanel.paidDays.getText()),
-                    Integer.parseInt(welcomePanel.sickDays.getText()),
-                    Integer.parseInt(welcomePanel.mentalHealthDays.getText()), paidHolidays, unpaidHolidayPanels);
+                    Integer.parseInt(welcomePanel.mentalHealthDays.getText()),
+                    Integer.parseInt(welcomePanel.sickDays.getText()), paidHolidays);
 
             JOptionPane.showMessageDialog(this,
                     "Lost days: " + calculator.calculateLostDays(unpaidHolidayPanels) +

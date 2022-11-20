@@ -11,12 +11,12 @@ public class Calculator
 
     private HashMap<Integer, boolean[]> workingPaidDays;
 
-    public Calculator(boolean leapYear, int pto, int sickDays, int mentalHealthDays,
-                      ArrayList<PaidHolidayPanel> step2PanelArrayList, ArrayList<UnpaidHolidayPanel> unpaidHolidayPanelArrayList)
+    public Calculator(boolean leapYear, int pto, int mentalHealthDays, int sickDays,
+                      ArrayList<PaidHolidayPanel> step2PanelArrayList)
     {
         this.PTO = pto;
-        this.sickDays = sickDays;
         this.mentalHealth = mentalHealthDays;
+        this.sickDays = sickDays;
 
         fillHashMap(leapYear);
 
@@ -62,6 +62,7 @@ public class Calculator
 
     private int updateCalendar(int NumDaysOff, HashMap<Integer, boolean[]> workingPaidDays, int startDate, int lostDays)
     {
+        boolean sickDaysChanged = false;
         while (NumDaysOff > 0)
         {
             boolean[] dayInfo = workingPaidDays.get(startDate);
@@ -80,6 +81,7 @@ public class Calculator
                 {
                     if (sickDays > 0)
                     {
+                        sickDaysChanged = true;
                         sickDays--;
                     } else
                     {
@@ -95,6 +97,10 @@ public class Calculator
             {
                 startDate++;
             }
+        }
+        if (sickDaysChanged)
+        {
+            sickDays++;
         }
         return lostDays;
     }
