@@ -9,7 +9,7 @@ public class UnpaidHolidayPanel extends JPanel
     public JFormattedTextField daysToTakeOff;
     public DatePanel datePanel;
 
-    public UnpaidHolidayPanel()
+    public UnpaidHolidayPanel(int year)
     {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -18,7 +18,7 @@ public class UnpaidHolidayPanel extends JPanel
 
         add(new JComboBox<>(yamimTovim));
         add(new JLabel("Choose the starting date"));
-        datePanel = new DatePanel();
+        datePanel = new DatePanel(year);
         add(datePanel);
         add(new JLabel("How many days do you need to take off"));
 

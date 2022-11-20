@@ -1,17 +1,24 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainPanel extends JPanel
 {
     private WelcomePanel welcomePanel;
     private ArrayList<PaidHolidayPanel> paidHolidays;
     private ArrayList<UnpaidHolidayPanel> unpaidHolidayPanels;
-
     private UnpaidHolidayPanel currentUnpaidHolidayPanel;
+
+    private int year;
 
     public MainPanel()
     {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+        this.year = Integer.parseInt(dateFormat.format(new Date()));
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         unpaidHolidayPanels = new ArrayList<>();
@@ -36,6 +43,8 @@ public class MainPanel extends JPanel
             addNewStep2Panel();
 
             revalidate();
+
+            this.year = welcomePanel.getYear();
         } else
         {
         } // validation
@@ -43,7 +52,7 @@ public class MainPanel extends JPanel
 
     private void addNewStep2Panel()
     {
-        PaidHolidayPanel step2Panel = new PaidHolidayPanel();
+        PaidHolidayPanel step2Panel = new PaidHolidayPanel(year);
         add(step2Panel);
         paidHolidays.add(step2Panel);
 
@@ -82,7 +91,7 @@ public class MainPanel extends JPanel
 
     private void addNewUnpaidHolidayPanel()
     {
-        UnpaidHolidayPanel unpaidHolidayPanel = new UnpaidHolidayPanel();
+        UnpaidHolidayPanel unpaidHolidayPanel = new UnpaidHolidayPanel(year);
         currentUnpaidHolidayPanel = unpaidHolidayPanel;
         add(unpaidHolidayPanel);
         unpaidHolidayPanels.add(unpaidHolidayPanel);

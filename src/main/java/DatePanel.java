@@ -13,15 +13,17 @@ public class DatePanel extends JPanel
     private int lastDay;
     private JComboBox<String> days;
     private JComboBox<String> months;
-    private JComboBox<String> years;
-
     public HashMap<String, Integer> monthHashMap = new HashMap<>();
+
+    int year;
 
     private final String[] monthNames = new String[]{"January", "February", "March", "April", "May",
             "June", "July", "August", "September", "October", "November", "December"};
 
-    public DatePanel()
+    public DatePanel(int year)
     {
+        this.year = year;
+
         monthHashMap.put("January", 31);
         monthHashMap.put("February", 28);
         monthHashMap.put("March", 31);
@@ -38,17 +40,6 @@ public class DatePanel extends JPanel
         months = new JComboBox<>(monthNames);
         months.setEditable(false);
         months.setSelectedItem("January");
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy");
-        String[] englishYears = new String[1000];
-        for (int i = 0; i < englishYears.length; i++)
-        {
-            englishYears[i] = 2000 + i + "";
-        }
-        years = new JComboBox<>(englishYears);
-        years.setSelectedItem(dateFormat.format(new Date()));
-
-        years.addActionListener(this::onChange);
         months.addActionListener(this::onChange);
 
         validateDay();
@@ -57,19 +48,13 @@ public class DatePanel extends JPanel
 
         add(days);
 
-        add(years);
-
     }
 
     private void onChange(ActionEvent actionEvent)
     {
         remove(days);
 
-        remove(years);
-
         validateDay();
-
-        add(years);
 
         revalidate();
     }
@@ -103,7 +88,6 @@ public class DatePanel extends JPanel
 
     private boolean getLeapYear()
     {
-        int year = Integer.parseInt((String) Objects.requireNonNull(years.getSelectedItem()));
         boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
         monthHashMap.put("February", isLeap ? 29 : 28);
         return isLeap;
