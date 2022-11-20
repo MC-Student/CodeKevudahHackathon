@@ -34,10 +34,9 @@ public class DatePanel extends JPanel
         monthHashMap.put("November", 30);
         monthHashMap.put("December", 31);
 
-        months = new JComboBox<>(monthHashMap.keySet().toArray(new String[0]));
+        months = new JComboBox<>(monthNames);
         months.setEditable(false);
         months.setSelectedItem("January");
-
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy");
         String[] englishYears = new String[1000];
