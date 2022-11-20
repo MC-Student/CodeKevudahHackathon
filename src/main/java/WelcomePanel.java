@@ -3,13 +3,21 @@ import javax.swing.text.NumberFormatter;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class WelcomePanel extends JPanel
 {
-    private JComboBox<String> yearPairs;
+    public JComboBox<String> yearPairs;
+
+    public JFormattedTextField paidDays;
+
+    public JFormattedTextField sickDays;
+
+    public JFormattedTextField mentalHealthDays;
+
+    public JFormattedTextField companyTO;
+
     public WelcomePanel()
     {
 
@@ -33,26 +41,26 @@ public class WelcomePanel extends JPanel
         add(new JLabel("Please enter how many paid days off"));
 
         NumberFormatter numberFormatter = new NumberFormatter(new DecimalFormat("#"));
-        JFormattedTextField paidDays = new JFormattedTextField(numberFormatter);
+        paidDays = new JFormattedTextField(numberFormatter);
         paidDays.setColumns(5);
         add(paidDays);
 
         add(new JLabel("Please enter how many sick days off"));
 
-        JFormattedTextField sickDays = new JFormattedTextField(numberFormatter);
+        sickDays = new JFormattedTextField(numberFormatter);
         sickDays.setColumns(5);
         add(sickDays);
 
 
         add(new JLabel("Please enter how many mental health days off"));
 
-        JFormattedTextField mentalHealthDays = new JFormattedTextField(numberFormatter);
+        mentalHealthDays = new JFormattedTextField(numberFormatter);
         sickDays.setColumns(5);
         add(mentalHealthDays);
 
         add(new JLabel("Please enter how many company-wide time off"));
 
-        JFormattedTextField companyTO = new JFormattedTextField(numberFormatter);
+        companyTO = new JFormattedTextField(numberFormatter);
         sickDays.setColumns(5);
         add(companyTO);
     }

@@ -6,7 +6,7 @@ public class MainPanel extends JPanel
 {
     private WelcomePanel welcomePanel;
     private ArrayList<Step2Panel> step2Panels;
-    private ArrayList<VerticalPanel> verticalPanels;
+    private ArrayList<UnpaidHolidayPanel> verticalPanels;
 
     public MainPanel()
     {
@@ -65,7 +65,7 @@ public class MainPanel extends JPanel
     private void onSubmitWelcomeStep2(ActionEvent actionEvent)
     {
         removeAll();
-        VerticalPanel verticalPanel = new VerticalPanel();
+        UnpaidHolidayPanel verticalPanel = new UnpaidHolidayPanel();
         add(verticalPanel);
         verticalPanels.add(verticalPanel);
 
@@ -77,7 +77,7 @@ public class MainPanel extends JPanel
 
     private void addMore(ActionEvent actionEvent)
     {
-        VerticalPanel verticalPanel = new VerticalPanel();
+        UnpaidHolidayPanel verticalPanel = new UnpaidHolidayPanel();
         add(verticalPanel);
         verticalPanels.add(verticalPanel);
     }

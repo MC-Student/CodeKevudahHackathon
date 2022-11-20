@@ -16,7 +16,7 @@ public class DatePanel extends JPanel
 
     public HashMap<String, Integer> monthHashMap = new HashMap<>();
 
-    private String[] monthNames = new String[]{"January", "February", "March", "April", "May",
+    private final String[] monthNames = new String[]{"January", "February", "March", "April", "May",
             "June", "July", "August", "September", "October", "November", "December"};
 
     public DatePanel()
