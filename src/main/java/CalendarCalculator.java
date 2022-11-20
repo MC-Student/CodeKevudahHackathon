@@ -27,12 +27,13 @@ public class CalendarCalculator
         // get value from HashMap
         //boolean workingToday = workingPaidDays.get(364)[0];
 
-        int[] workOff = new int[]{4, 25, 66, 72, 194, 278, 333, 361};
+        //generated from first GUI - days company gives off
+        int[] workOff = new int[]{4, 25, 66, 72, 194, 278, 333, 361}; // these should stay (false, true)
 
         //any work days already off with no loss of money
         for (int i = 0; i < workOff.length; i++)
         {
-            boolean[] dayInfo = workingPaidDays.get(i);
+            boolean[] dayInfo = workingPaidDays.get(workOff[i]);
             dayInfo[0] = false;
             workingPaidDays.put(workOff[i], dayInfo);
         }
@@ -578,6 +579,8 @@ public class CalendarCalculator
             System.out.print("Day "+ i + ": ");
             System.out.println("Working? " + workingPaidDays.get(i)[0] + "; Paid? " + workingPaidDays.get(i)[1]);
         }
+
+        System.out.println("Lost days: " + lostDays);
 
         //company gives off - set workingpaid[0] for all those days to false
     }
