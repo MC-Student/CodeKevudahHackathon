@@ -63,11 +63,15 @@ public class DatePanel extends JPanel
 
     private void onChange(ActionEvent actionEvent)
     {
+        remove(days);
+
         remove(years);
 
         validateDay();
 
         add(years);
+
+        revalidate();
     }
 
     private void validateDay()
@@ -77,13 +81,7 @@ public class DatePanel extends JPanel
 
         if ((Objects.requireNonNull(months.getSelectedItem())).equals("February"))
         {
-            if (leapYear && Objects.requireNonNull(months.getSelectedItem()).equals("February"))
-            {
-                lastDay = 29;
-            } else if (Objects.requireNonNull(months.getSelectedItem()).equals("February"))
-            {
-                lastDay = 28;
-            }
+            lastDay = leapYear ? 29 : 28;
         } else
         {
             lastDay = monthHashMap.get((String) (Objects.requireNonNull(months.getSelectedItem())));
@@ -111,15 +109,20 @@ public class DatePanel extends JPanel
 
         int count = 0;
         String month = (String) Objects.requireNonNull(months.getSelectedItem());
+
+        // TODO: Fix logic
         for (int i = 0; i < monthNames.length; i++)
         {
-            count += monthHashMap.get(monthNames[i]);
-
             if (monthNames[i].equals(month))
             {
                 count += Integer.parseInt((String) Objects.requireNonNull(days.getSelectedItem()));
                 break;
             }
+            else
+            {
+                count += monthHashMap.get(monthNames[i]);
+            }
+
         }
 
         return count;

@@ -11,7 +11,7 @@ public class MainPanelTake2 extends JPanel
 
     public MainPanelTake2()
     {
-        setLayout(new FlowLayout());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         unpaidHolidayPanels = new ArrayList<>();
         step2Panels = new ArrayList<>();
@@ -43,7 +43,9 @@ public class MainPanelTake2 extends JPanel
 
     private void addNewStep2Panel()
     {
-        add(new Step2Panel());
+        Step2Panel step2Panel = new Step2Panel();
+        add(step2Panel);
+        step2Panels.add(step2Panel);
 
         JButton addMorePaidHolidays = new JButton("Add more paid holidays");
         addMorePaidHolidays.addActionListener(this::onSubmitAddMorePaidHolidays);
@@ -106,6 +108,8 @@ public class MainPanelTake2 extends JPanel
         removeAll();
 
         JOptionPane.showMessageDialog(this, "Result goes here");
+
+        add(new JLabel("All done!"));
 
         revalidate();
     }
