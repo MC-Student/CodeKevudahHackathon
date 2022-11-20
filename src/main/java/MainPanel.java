@@ -8,6 +8,8 @@ public class MainPanel extends JPanel
     private ArrayList<PaidHolidayPanel> paidHolidays;
     private ArrayList<UnpaidHolidayPanel> unpaidHolidayPanels;
 
+    private UnpaidHolidayPanel currentUnpaidHolidayPanel;
+
     public MainPanel()
     {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -25,9 +27,9 @@ public class MainPanel extends JPanel
 
     private void onSubmitWelcome(ActionEvent actionEvent)
     {
-        if (!welcomePanel.mentalHealthDays.getText().equals("")
-                && !welcomePanel.sickDays.getText().equals("")
-                && !welcomePanel.paidDays.getText().equals(""))
+        if (!welcomePanel.mentalHealthDays.getText().strip().equals("")
+                && !welcomePanel.sickDays.getText().strip().equals("")
+                && !welcomePanel.paidDays.getText().strip().equals(""))
         {
             removeAll();
 
@@ -56,6 +58,7 @@ public class MainPanel extends JPanel
 
     private void onSubmitAddMorePaidHolidays(ActionEvent actionEvent)
     {
+        JOptionPane.showMessageDialog(this, "Submitted");
         removeAll();
 
         addNewStep2Panel();
@@ -80,6 +83,7 @@ public class MainPanel extends JPanel
     private void addNewUnpaidHolidayPanel()
     {
         UnpaidHolidayPanel unpaidHolidayPanel = new UnpaidHolidayPanel();
+        currentUnpaidHolidayPanel = unpaidHolidayPanel;
         add(unpaidHolidayPanel);
         unpaidHolidayPanels.add(unpaidHolidayPanel);
 
@@ -94,43 +98,45 @@ public class MainPanel extends JPanel
 
     private void onSubmitAddMoreUnpaidHolidays(ActionEvent actionEvent)
     {
-        removeAll();
-
-        addNewUnpaidHolidayPanel();
-
-        for (int i = 0; i < unpaidHolidayPanels.size(); i++)
+        if (!currentUnpaidHolidayPanel.daysToTakeOff.getText().strip().equals(""))
         {
-            System.out.println(unpaidHolidayPanels.get(i).datePanel.getCorrespondingNumber());
-        }
+            JOptionPane.showMessageDialog(this, "Submitted");
 
-        revalidate();
+            removeAll();
+
+            addNewUnpaidHolidayPanel();
+
+            for (int i = 0; i < unpaidHolidayPanels.size(); i++)
+            {
+                System.out.println(unpaidHolidayPanels.get(i).datePanel.getCorrespondingNumber());
+            }
+
+            revalidate();
+        }
     }
 
     private void onSubmitUnpaidHolidays(ActionEvent actionEvent)
     {
-        removeAll();
+        if (!currentUnpaidHolidayPanel.daysToTakeOff.getText().strip().equals(""))
+        {
+            removeAll();
 
-        int year = welcomePanel.getYear();
-        boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
+            int year = welcomePanel.getYear();
+            boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
 
-        System.out.println(paidHolidays.size());
-        System.out.println(unpaidHolidayPanels.size());
-        System.out.println("Welcome panel paid days: " + welcomePanel.paidDays.getText());
-        System.out.println("Welcome panel sick days: " + welcomePanel.sickDays.getText());
-        System.out.println("Welcome panel m_h_ days: " + welcomePanel.mentalHealthDays.getText());
+            Calculator calculator = new Calculator(isLeap, Integer.parseInt(welcomePanel.paidDays.getText()),
+                    Integer.parseInt(welcomePanel.sickDays.getText()),
+                    Integer.parseInt(welcomePanel.mentalHealthDays.getText()), paidHolidays, unpaidHolidayPanels);
 
-        Calculator calculator = new Calculator(isLeap, Integer.parseInt(welcomePanel.paidDays.getText()),
-                Integer.parseInt(welcomePanel.sickDays.getText()),
-                Integer.parseInt(welcomePanel.mentalHealthDays.getText()), paidHolidays, unpaidHolidayPanels);
+            JOptionPane.showMessageDialog(this,
+                    "Lost days: " + calculator.calculateLostDays(unpaidHolidayPanels) +
+                            "\nPaid Time Off Remaining: " + calculator.PTO +
+                            "\nMental Health Days Remaining: " + calculator.mentalHealth +
+                            "\nSick Days Remaining: " + calculator.sickDays);
 
-        JOptionPane.showMessageDialog(this,
-                "Lost days: " + calculator.calculateLostDays(unpaidHolidayPanels) +
-                        "\nPaid Time Off Remaining: " + calculator.PTO +
-                        "\nMental Health Days Remaining: " + calculator.mentalHealth +
-                        "\nSick Days Remaining: " + calculator.sickDays);
+            add(new JLabel("All done!"));
 
-        add(new JLabel("All done!"));
-
-        revalidate();
+            revalidate();
+        }
     }
 }
