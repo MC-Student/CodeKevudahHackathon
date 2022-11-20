@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class MainPanel extends JPanel
 {
     private WelcomePanel welcomePanel;
-    private ArrayList<PaidHolidayPanel> step2Panels;
+    private ArrayList<PaidHolidayPanel> paidHolidays;
     private ArrayList<UnpaidHolidayPanel> unpaidHolidayPanels;
 
     public MainPanel()
@@ -13,7 +13,7 @@ public class MainPanel extends JPanel
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         unpaidHolidayPanels = new ArrayList<>();
-        step2Panels = new ArrayList<>();
+        paidHolidays = new ArrayList<>();
 
         welcomePanel = new WelcomePanel();
         add(welcomePanel);
@@ -43,7 +43,7 @@ public class MainPanel extends JPanel
     {
         PaidHolidayPanel step2Panel = new PaidHolidayPanel();
         add(step2Panel);
-        step2Panels.add(step2Panel);
+        paidHolidays.add(step2Panel);
 
         JButton addMorePaidHolidays = new JButton("Add more paid holidays");
         addMorePaidHolidays.addActionListener(this::onSubmitAddMorePaidHolidays);
@@ -69,9 +69,9 @@ public class MainPanel extends JPanel
 
         addNewUnpaidHolidayPanel();
 
-        for (int i = 0; i < step2Panels.size(); i++)
+        for (int i = 0; i < paidHolidays.size(); i++)
         {
-            System.out.println(step2Panels.get(i).datePanel.getCorrespondingNumber());
+            System.out.println(paidHolidays.get(i).datePanel.getCorrespondingNumber());
         }
 
         revalidate();
@@ -113,13 +113,21 @@ public class MainPanel extends JPanel
         int year = welcomePanel.getYear();
         boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
 
+        System.out.println(paidHolidays.size());
+        System.out.println(unpaidHolidayPanels.size());
+        System.out.println("Welcome panel paid days: " + welcomePanel.paidDays.getText());
+        System.out.println("Welcome panel sick days: " + welcomePanel.sickDays.getText());
+        System.out.println("Welcome panel m_h_ days: " + welcomePanel.mentalHealthDays.getText());
+
         Calculator calculator = new Calculator(isLeap, Integer.parseInt(welcomePanel.paidDays.getText()),
                 Integer.parseInt(welcomePanel.sickDays.getText()),
-                Integer.parseInt(welcomePanel.mentalHealthDays.getText()), step2Panels, unpaidHolidayPanels);
+                Integer.parseInt(welcomePanel.mentalHealthDays.getText()), paidHolidays, unpaidHolidayPanels);
+
         JOptionPane.showMessageDialog(this,
                 "Lost days: " + calculator.calculateLostDays(unpaidHolidayPanels) +
-        "\nPaid Time Off Remaining: " + calculator.PTO + "\nSick Days Remaining: " + calculator.sickDays +
-        "\nMental Health Days Remaining: " + calculator.mentalHealth);
+                        "\nPaid Time Off Remaining: " + calculator.PTO +
+                        "\nMental Health Days Remaining: " + calculator.mentalHealth +
+                        "\nSick Days Remaining: " + calculator.sickDays);
 
         add(new JLabel("All done!"));
 

@@ -18,11 +18,7 @@ public class Calculator
         this.sickDays = sickDays;
         this.mentalHealth = mentalHealthDays;
 
-        workingPaidDays = new HashMap<>();
-        for (int i = 0; i < (leapYear ? 366 : 365); i++)
-        {
-            workingPaidDays.put(i, new boolean[]{true, true});
-        }
+        fillHashMap(leapYear);
 
         ArrayList<Integer> workOff = new ArrayList<>();
         for (int i = 0; i < step2PanelArrayList.size(); i++)
@@ -38,8 +34,15 @@ public class Calculator
             dayInfo[0] = false;
             workingPaidDays.put(workOff.get(i), dayInfo);
         }
+    }
 
-        calculateLostDays(unpaidHolidayPanelArrayList);
+    private void fillHashMap(boolean leapYear)
+    {
+        workingPaidDays = new HashMap<>();
+        for (int i = 0; i < (leapYear ? 366 : 365); i++)
+        {
+            workingPaidDays.put(i, new boolean[]{true, true});
+        }
     }
 
     public int calculateLostDays(ArrayList<UnpaidHolidayPanel> unpaidHolidayPanelArrayList)
@@ -50,6 +53,7 @@ public class Calculator
         {
             int day = unpaidHolidayPanelArrayList.get(i).datePanel.getCorrespondingNumber();
             int numDays = Integer.parseInt(unpaidHolidayPanelArrayList.get(i).daysToTakeOff.getText());
+            System.out.println("DAY: " + day + " " + numDays);
             lostDays = updateCalendar(numDays, workingPaidDays, day, lostDays);
         }
 

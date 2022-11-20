@@ -47,18 +47,17 @@ public class WelcomePanel extends JPanel
         paidDays.setColumns(5);
         add(paidDays);
 
+        add(new JLabel("Please enter how many mental health days off"));
+
+        mentalHealthDays = new JFormattedTextField(numberFormatter);
+        mentalHealthDays.setColumns(5);
+        add(mentalHealthDays);
+
         add(new JLabel("Please enter how many sick days off"));
 
         sickDays = new JFormattedTextField(numberFormatter);
         sickDays.setColumns(5);
         add(sickDays);
-
-
-        add(new JLabel("Please enter how many mental health days off"));
-
-        mentalHealthDays = new JFormattedTextField(numberFormatter);
-        sickDays.setColumns(5);
-        add(mentalHealthDays);
     }
 
     public int getYear()

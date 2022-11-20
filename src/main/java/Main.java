@@ -5,7 +5,7 @@ public class Main extends JFrame
 {
     public Main()
     {
-        setTitle("Jewish Woman Time Off Calculator");
+        setTitle("My Frum Calendar");
         setSize(900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
