@@ -16,21 +16,17 @@ public class WelcomePanel extends JPanel
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        add(new JLabel("Please choose the starting year"));
+        add(new JLabel("Please choose the starting year (January - December)"));
 
-        JComboBox<String> yearPairs = new JComboBox<>();
+        JComboBox<String> yearPairs;
         DateFormat dateFormat = new SimpleDateFormat("yyyy");
         String[] englishYears = new String[1000];
         for (int i = 0; i < englishYears.length; i++)
         {
-            englishYears[i] = (2000 + i) + "-" + (2001 + i);
+            englishYears[i] = (2000 + i) + "";
         }
         yearPairs = new JComboBox<>(englishYears);
-        LocalDate now = LocalDate.now();
-        LocalDate nextYear = now.plusYears(1);
-        // TODO: Set to this year
-        yearPairs.setSelectedItem(dateFormat.format(now.getYear()) + "-"
-                + (dateFormat.format(nextYear.getYear())));
+        yearPairs.setSelectedItem(dateFormat.format(new Date()));
         add(yearPairs);
 
         add(new JLabel("Please enter how many paid days off"));
@@ -52,7 +48,6 @@ public class WelcomePanel extends JPanel
         JFormattedTextField mentalHealthDays = new JFormattedTextField(numberFormatter);
         sickDays.setColumns(5);
         add(mentalHealthDays);
-
 
         add(new JLabel("Please enter how many company-wide time off"));
 
