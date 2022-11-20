@@ -3,6 +3,12 @@ import java.util.Scanner;
 
 public class CalendarCalculator
 {
+    public static int PTO;
+
+    public static int sickDays;
+
+    public static int mentalHealth;
+
     public static void main(String[] args)
     {
         Scanner user = new Scanner(System.in);
@@ -39,15 +45,15 @@ public class CalendarCalculator
         }
 
         System.out.println("PTO?");
-        int PTO = user.nextInt();
+        PTO = user.nextInt();
         user.nextLine();
 
         System.out.println("sick days?");
-        int sickDays = user.nextInt();
+        sickDays = user.nextInt();
         user.nextLine();
 
         System.out.println("paid mental health days?");
-        int mentalHealth = user.nextInt();
+        mentalHealth = user.nextInt();
         user.nextLine();
 
         int lostDays = 0;
@@ -63,44 +69,10 @@ public class CalendarCalculator
         int rhDays = user.nextInt();
         user.nextLine();
 
+
         if (workingPaidDays.get(rhStart)[0])
         {
-            while (rhDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(rhStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(rhStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(rhStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(rhStart, dayInfo);
-                        }
-                    }
-                }
-
-                rhDays--;
-                if (rhDays > 0)
-                {
-                    rhStart++;
-                }
-            }
+            lostDays = updateCalendar(rhDays, workingPaidDays, rhStart, lostDays);
         }
 
 
@@ -114,42 +86,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(ykStart)[0])
         {
-            while (ykDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(ykStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(ykStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(ykStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(ykStart, dayInfo);
-                        }
-                    }
-                }
-
-                ykDays--;
-                if (ykDays > 0)
-                {
-                    ykStart++;
-                }
-            }
+            lostDays = updateCalendar(ykDays, workingPaidDays, ykStart, lostDays);
         }
 
 
@@ -163,42 +100,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(suFStart)[0])
         {
-            while (suFDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(suFStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(suFStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(suFStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(suFStart, dayInfo);
-                        }
-                    }
-                }
-
-                suFDays--;
-                if (suFDays > 0)
-                {
-                    suFStart++;
-                }
-            }
+            lostDays = updateCalendar(suFDays, workingPaidDays, suFStart, lostDays);
         }
 
 
@@ -212,42 +114,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(suLStart)[0])
         {
-            while (suLDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(suLStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(suLStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(suLStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(suLStart, dayInfo);
-                        }
-                    }
-                }
-
-                suLDays--;
-                if (suLDays > 0)
-                {
-                    suLStart++;
-                }
-            }
+            lostDays = updateCalendar(suLDays, workingPaidDays, suLStart, lostDays);
         }
 
 
@@ -261,42 +128,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(chStart)[0])
         {
-            while (chDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(chStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(chStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(chStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(chStart, dayInfo);
-                        }
-                    }
-                }
-
-                chDays--;
-                if (chDays > 0)
-                {
-                    chStart++;
-                }
-            }
+            lostDays = updateCalendar(chDays, workingPaidDays, chStart, lostDays);
         }
 
 
@@ -310,42 +142,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(puStart)[0])
         {
-            while (puDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(puStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(puStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(puStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(puStart, dayInfo);
-                        }
-                    }
-                }
-
-                puDays--;
-                if (puDays > 0)
-                {
-                    puStart++;
-                }
-            }
+            lostDays = updateCalendar(puDays, workingPaidDays, puStart, lostDays);
         }
 
 
@@ -359,42 +156,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(peFStart)[0])
         {
-            while (peFDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(peFStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(peFStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(peFStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(peFStart, dayInfo);
-                        }
-                    }
-                }
-
-                peFDays--;
-                if (peFDays > 0)
-                {
-                    peFStart++;
-                }
-            }
+            lostDays = updateCalendar(peFDays, workingPaidDays, peFStart, lostDays);
         }
 
 
@@ -408,42 +170,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(peLStart)[0])
         {
-            while (peLDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(peLStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(peLStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(peLStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(peLStart, dayInfo);
-                        }
-                    }
-                }
-
-                peLDays--;
-                if (peLDays > 0)
-                {
-                    peLStart++;
-                }
-            }
+            lostDays = updateCalendar(peLDays, workingPaidDays, peLStart, lostDays);
         }
 
 
@@ -457,42 +184,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(shavStart)[0])
         {
-            while (shavDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(shavStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(shavStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(shavStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(shavStart, dayInfo);
-                        }
-                    }
-                }
-
-                shavDays--;
-                if (shavDays > 0)
-                {
-                    shavStart++;
-                }
-            }
+            lostDays = updateCalendar(shavDays, workingPaidDays, shavStart, lostDays);
         }
 
         System.out.println("starting date for Tisha Ba'av");
@@ -505,42 +197,7 @@ public class CalendarCalculator
 
         if (workingPaidDays.get(tBStart)[0])
         {
-            while (tBDays > 0)
-            {
-                boolean[] dayInfo = workingPaidDays.get(tBStart);
-                dayInfo[0] = false;
-                workingPaidDays.put(tBStart, dayInfo);
-
-                if (PTO > 0)
-                {
-                    PTO--;
-                } else
-                {
-                    if (mentalHealth > 0)
-                    {
-                        mentalHealth--;
-                    } else
-                    {
-                        if (sickDays > 0)
-                        {
-                            sickDays--;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(tBStart, dayInfo);
-                        } else
-                        {
-                            lostDays++;
-                            dayInfo[1] = false;
-                            workingPaidDays.put(tBStart, dayInfo);
-                        }
-                    }
-                }
-
-                tBDays--;
-                if (tBDays > 0)
-                {
-                    tBStart++;
-                }
-            }
+            lostDays = updateCalendar(tBDays, workingPaidDays, tBStart, lostDays);
         }
 
         for (int i = 0; i < workingPaidDays.size(); i++)
@@ -552,6 +209,48 @@ public class CalendarCalculator
         System.out.println("Lost days: " + lostDays);
 
         //company gives off - set workingpaid[0] for all those days to false
+    }
+
+    private static int updateCalendar(int NumDaysOff, HashMap<Integer, boolean[]> workingPaidDays, int startDate, int lostDays)
+    {
+        while (NumDaysOff > 0)
+        {
+            boolean[] dayInfo = workingPaidDays.get(startDate);
+            dayInfo[0] = false;
+            workingPaidDays.put(startDate, dayInfo);
+
+            if (PTO > 0)
+            {
+                PTO--;
+            }
+            else
+            {
+                if (mentalHealth > 0)
+                {
+                    mentalHealth--;
+                }
+                else
+                {
+                    if (sickDays > 0)
+                    {
+                        sickDays--;
+                    }
+                    else
+                    {
+                        lostDays++;
+                    }
+                    dayInfo[1] = false;
+                    workingPaidDays.put(startDate, dayInfo);
+                }
+            }
+
+            NumDaysOff--;
+            if (NumDaysOff > 0)
+            {
+                startDate++;
+            }
+        }
+        return lostDays;
     }
 
 
