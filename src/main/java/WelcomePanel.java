@@ -5,9 +5,11 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 public class WelcomePanel extends JPanel
 {
+    private JComboBox<String> yearPairs;
     public WelcomePanel()
     {
 
@@ -18,7 +20,6 @@ public class WelcomePanel extends JPanel
 
         add(new JLabel("Please choose the starting year (January - December)"));
 
-        JComboBox<String> yearPairs;
         DateFormat dateFormat = new SimpleDateFormat("yyyy");
         String[] englishYears = new String[1000];
         for (int i = 0; i < englishYears.length; i++)
@@ -56,4 +57,8 @@ public class WelcomePanel extends JPanel
         add(companyTO);
     }
 
+    public int getYear()
+    {
+        return Integer.parseInt((String) Objects.requireNonNull(yearPairs.getSelectedItem()));
+    }
 }

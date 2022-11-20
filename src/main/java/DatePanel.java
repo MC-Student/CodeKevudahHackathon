@@ -17,7 +17,7 @@ public class DatePanel extends JPanel
     public HashMap<String, Integer> monthHashMap = new HashMap<>();
 
     private String[] monthNames = new String[]{"January", "February", "March", "April", "May",
-    "June", "July", "August", "September", "October", "November", "December"};
+            "June", "July", "August", "September", "October", "November", "December"};
 
     public DatePanel()
     {
@@ -84,9 +84,9 @@ public class DatePanel extends JPanel
             {
                 lastDay = 28;
             }
-        }
-        else {
-            lastDay = monthHashMap.get((String)(Objects.requireNonNull(months.getSelectedItem())));
+        } else
+        {
+            lastDay = monthHashMap.get((String) (Objects.requireNonNull(months.getSelectedItem())));
         }
 
         for (int i = 1; i <= lastDay; i++)
@@ -110,7 +110,7 @@ public class DatePanel extends JPanel
         getLeapYear();
 
         int count = 0;
-        String month = (String)Objects.requireNonNull(months.getSelectedItem());
+        String month = (String) Objects.requireNonNull(months.getSelectedItem());
         for (int i = 0; i < monthNames.length; i++)
         {
             count += monthHashMap.get(monthNames[i]);

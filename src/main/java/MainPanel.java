@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class MainPanel extends JPanel
 {
+    private WelcomePanel welcomePanel;
     private ArrayList<Step2Panel> step2Panels;
     private ArrayList<VerticalPanel> verticalPanels;
 
@@ -13,7 +14,7 @@ public class MainPanel extends JPanel
         verticalPanels = new ArrayList<>();
         step2Panels = new ArrayList<>();
 
-        WelcomePanel welcomePanel = new WelcomePanel();
+        welcomePanel = new WelcomePanel();
         add(welcomePanel);
 
         JButton submitButton = new JButton("NEXT");
@@ -23,6 +24,10 @@ public class MainPanel extends JPanel
 
     private void onSubmitWelcome(ActionEvent actionEvent)
     {
+        int year = welcomePanel.getYear();
+        boolean isLeap = year % 400 == 0 && year % 100 != 0 && year % 4 == 0;
+        System.out.println(isLeap);
+
         removeAll();
         Step2Panel step2Panel = new Step2Panel();
         add(step2Panel);
@@ -75,6 +80,5 @@ public class MainPanel extends JPanel
         VerticalPanel verticalPanel = new VerticalPanel();
         add(verticalPanel);
         verticalPanels.add(verticalPanel);
-
     }
 }

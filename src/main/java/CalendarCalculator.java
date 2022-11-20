@@ -73,22 +73,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(rhStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -104,7 +101,6 @@ public class CalendarCalculator
                 }
             }
         }
-
 
 
         System.out.println("starting date for yom kippur");
@@ -126,22 +122,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(ykStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -178,22 +171,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(suFStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -230,22 +220,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(suLStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -282,22 +269,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(chStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -334,22 +318,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(puStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -386,22 +367,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(peFStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -438,22 +416,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(peLStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -490,22 +465,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(shavStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -541,22 +513,19 @@ public class CalendarCalculator
                 if (PTO > 0)
                 {
                     PTO--;
-                }
-                else
+                } else
                 {
                     if (mentalHealth > 0)
                     {
                         mentalHealth--;
-                    }
-                    else
+                    } else
                     {
                         if (sickDays > 0)
                         {
                             sickDays--;
                             dayInfo[1] = false;
                             workingPaidDays.put(tBStart, dayInfo);
-                        }
-                        else
+                        } else
                         {
                             lostDays++;
                             dayInfo[1] = false;
@@ -575,7 +544,7 @@ public class CalendarCalculator
 
         for (int i = 0; i < workingPaidDays.size(); i++)
         {
-            System.out.print("Day "+ i + ": ");
+            System.out.print("Day " + i + ": ");
             System.out.println("Working? " + workingPaidDays.get(i)[0] + "; Paid? " + workingPaidDays.get(i)[1]);
         }
 

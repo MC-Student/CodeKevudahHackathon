@@ -7,7 +7,7 @@ public class Step2Panel extends JPanel
     {
         setLayout(new FlowLayout());
 
-        String[] paidHolidays = new String[]{ "Thanksgiving", "New Years", "Veteran's Day", "Memorial Day", "Other"};
+        String[] paidHolidays = new String[]{"Thanksgiving", "New Years", "Veteran's Day", "Memorial Day", "Other"};
         add(new JComboBox<>(paidHolidays));
         add(new DatePanel());
     }
