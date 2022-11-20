@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 public class VerticalPanel extends JPanel
 {
     private JPanel horizontalPanel;
+    private DatePanel datePanel;
     public VerticalPanel()
     {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -17,7 +18,11 @@ public class VerticalPanel extends JPanel
         String[] paidHolidays = new String[]{ "Thanksgiving", "New Years", "Veteran's Day", "Memorial Day", "Other"};
 
         horizontalPanel.add(new JComboBox<>(paidHolidays));
-        horizontalPanel.add(new DatePanel());
+
+        datePanel = new DatePanel();
+        horizontalPanel.add(datePanel);
+
+        System.out.println(datePanel.getCorrespondingNumber());
 
         add(horizontalPanel);
 
@@ -29,6 +34,7 @@ public class VerticalPanel extends JPanel
 
     private void onClickSubmit(ActionEvent actionEvent)
     {
+        System.out.println(datePanel.getCorrespondingNumber());
         horizontalPanel.removeAll();
 
         String[] yamimTovim = new String[]{"Rosh Hashana", "Yom Kippur", "Sukkos", "Asara B'Teves", "Chanukah", "Purim",
