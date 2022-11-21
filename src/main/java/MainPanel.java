@@ -81,11 +81,6 @@ public class MainPanel extends JPanel
 
         addNewUnpaidHolidayPanel();
 
-        for (int i = 0; i < paidHolidays.size(); i++)
-        {
-            System.out.println(paidHolidays.get(i).datePanel.getCorrespondingNumber());
-        }
-
         revalidate();
     }
 
@@ -114,11 +109,6 @@ public class MainPanel extends JPanel
             removeAll();
 
             addNewUnpaidHolidayPanel();
-
-            for (int i = 0; i < unpaidHolidayPanels.size(); i++)
-            {
-                System.out.println(unpaidHolidayPanels.get(i).datePanel.getCorrespondingNumber());
-            }
 
             revalidate();
         }

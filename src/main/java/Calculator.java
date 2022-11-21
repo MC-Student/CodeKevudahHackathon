@@ -53,7 +53,6 @@ public class Calculator
         {
             int day = unpaidHolidayPanelArrayList.get(i).datePanel.getCorrespondingNumber();
             int numDays = Integer.parseInt(unpaidHolidayPanelArrayList.get(i).daysToTakeOff.getText());
-            System.out.println("DAY: " + day + " " + numDays);
             lostDays = updateCalendar(numDays, workingPaidDays, day, lostDays);
         }
 
