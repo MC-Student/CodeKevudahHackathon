@@ -1,5 +1,5 @@
 # Code Kevudah Hackathon
-Honorable mention for the Code Kevudah Hackathon
+Honorable mention for the Code Kevudah Hackathon <br/>
 Collaborators:
 - [Rachel Nemesure](https://github.com/RachelRebecca)
 - [Meira Cohen](https://github.com/MC-Student)
